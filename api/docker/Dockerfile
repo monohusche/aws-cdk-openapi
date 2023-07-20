@@ -13,6 +13,6 @@ RUN npm install -g widdershins \
 # working directory
 WORKDIR /openapi
 
-RUN git clone https://github.com/slatedocs/slate
+RUN sudo git clone https://github.com/slatedocs/slate
 RUN cd slate \
     && bundle install
