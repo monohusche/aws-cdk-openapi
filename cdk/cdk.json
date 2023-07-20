@@ -28,8 +28,8 @@
     "RepositoryString": "monohusche/aws-cdk-openapi",
     "RepositoryBranch": "main",
     "CodestarConnectionArn": 
-"arn:aws:codestar-connections:us-east-1:513014387289:connection/34bcf018-8c02-4485-b164-12e8c3ba37b5",
-    "CodeArtifactDomain": "poc",
+"arn:aws:codestar-connections:us-east-1:928520285599:connection/3d235e48-dd38-4cb6-b5bd-10e8db44f1ee",
+    "CodeArtifactDomain": "sandbox",
     "CodeArtifactRepository": "cdk_lambda"
   }
 }
