@@ -1,5 +1,5 @@
 {
-  "app": "mvn -e -q compile exec:java",
+  "app": "mvn -e -q -X compile exec:java",
   "watch": {
     "include": [
       "**"
@@ -25,10 +25,11 @@
       "aws",
       "aws-cn"
     ],
-    "RepositoryString": "lukepopp/aws-blog-openapi-cdkv2",
+    "RepositoryString": "monohusche/aws-cdk-openapi",
     "RepositoryBranch": "main",
-    "CodestarConnectionArn": "arn:aws:codestar-connections:ap-southeast-2:067566784356:connection/27053bd0-ce64-4c0b-9381-e31475918dfa",
-    "CodeArtifactDomain": "openapiblog",
-    "CodeArtifactRepository": "openapiblog"
+    "CodestarConnectionArn": 
+"arn:aws:codestar-connections:us-east-1:513014387289:connection/34bcf018-8c02-4485-b164-12e8c3ba37b5",
+    "CodeArtifactDomain": "poc",
+    "CodeArtifactRepository": "cdk_lambda"
   }
 }
