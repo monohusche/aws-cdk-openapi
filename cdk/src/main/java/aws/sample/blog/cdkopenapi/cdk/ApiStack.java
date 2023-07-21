@@ -178,8 +178,9 @@ public class ApiStack extends Stack {
 
 		// Alpine ruby docker image size = 532.12 MB
 		// Ruby slim docker image size = 829.31 MB
+		DockerImage apDocImage;
 		try {
-			DockerImage apDocImage = DockerImage.fromBuild(entry);
+			apDocImage = DockerImage.fromBuild(entry);
 		}
 		catch(RuntimeException ex) {
 			System.err.println("ApiStack: docker build exception "+ ex);
