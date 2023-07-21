@@ -142,8 +142,12 @@ public class ApiStack extends Stack {
 				.build();
 		apiLambda.addPermission("API GW Permission", lamdaAPIGatewayPermission);
 
+		System.err.println("ApiStack: added permission to function "+ apiLambda);
+
 		Asset openAPIAsset = Asset.Builder.create(this, "OpenAPIBlogAsset")
 				.path("../api/openapi.yaml").build();
+
+		System.err.println("ApiStack: created Asset "+ openAPIAsset);
 
 		Map<String, String> transformMap = new HashMap<String, String>();
 		transformMap.put("Location", openAPIAsset.getS3ObjectUrl());
@@ -160,6 +164,8 @@ public class ApiStack extends Stack {
 				.deployOptions(StageOptions.builder().stageName(stage).build())
 				.deploy(true)
 				.build();
+
+		System.err.println("ApiStack: created SpecRestApi "+ restAPI);
 
 		restIdOutput = CfnOutput.Builder.create(this, "OpenAPIBlogAPIRestIdOutput")
 				.value(restAPI.getRestApiId())
@@ -213,6 +219,8 @@ public class ApiStack extends Stack {
 				.removalPolicy(RemovalPolicy.DESTROY)
 				.build();
 
+		System.err.println("ApiStack: created bucket "+ webBucket);
+
 		OriginAccessIdentity oai = OriginAccessIdentity.Builder.create(this, "OpenAPIBlogWidgetAPIOAI")
 				.comment("OAI for the OpenAPI Blog Widget API Document Website")
 				.build();
@@ -250,6 +258,8 @@ public class ApiStack extends Stack {
 						CacheControl.maxAge(Duration.seconds(0)),
 						CacheControl.sMaxAge(Duration.seconds(0))))
 				.build();
+
+		System.err.println("ApiStack: created BucketDeployment "+ bucketDeployment);
 
 		bucketNameOutput = CfnOutput.Builder.create(this, "OpenAPIBlogWebBucketName")
 				.value(webBucket.getBucketName())
