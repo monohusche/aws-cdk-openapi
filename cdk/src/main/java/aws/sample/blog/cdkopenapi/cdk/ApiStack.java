@@ -178,7 +178,12 @@ public class ApiStack extends Stack {
 
 		// Alpine ruby docker image size = 532.12 MB
 		// Ruby slim docker image size = 829.31 MB
-		DockerImage apDocImage = DockerImage.fromBuild(entry);
+		try {
+			DockerImage apDocImage = DockerImage.fromBuild(entry);
+		}
+		catch(RuntimeException ex)
+			System.err.println("ApiStack: docker build exception "+ ex);
+		
 		// TODO: Rather than build the docker image, this should be pushed to a
 		// container registry like Amazon ECR and pulled from there.
 		// The build of the image can take up to 5 minutes. The image can be referenced
