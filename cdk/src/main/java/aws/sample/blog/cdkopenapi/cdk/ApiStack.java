@@ -181,8 +181,9 @@ public class ApiStack extends Stack {
 		try {
 			DockerImage apDocImage = DockerImage.fromBuild(entry);
 		}
-		catch(RuntimeException ex)
+		catch(RuntimeException ex) {
 			System.err.println("ApiStack: docker build exception "+ ex);
+		}
 		
 		// TODO: Rather than build the docker image, this should be pushed to a
 		// container registry like Amazon ECR and pulled from there.
