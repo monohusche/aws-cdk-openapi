@@ -52,12 +52,16 @@ public class PipelineStack extends Stack {
 				.primaryOutputDirectory("cdk/cdk.out")
 				.build();
 
+		System.err.println("created synthStep" + synthStep);
+
 		final CodePipeline pipeline = CodePipeline.Builder.create(this, "OpenAPIBlogPipeline")
 				.pipelineName("OpenAPIBlogPipeline")
 				.selfMutation(true)
 				.dockerEnabledForSynth(true)
 				.synth(synthStep)
 				.build();
+
+		System.err.println("created pipeLine" + pipeline);
 
 		PolicyStatement codeArtifactStatement = PolicyStatement.Builder.create()
 				.sid("CodeArtifact")
@@ -88,6 +92,8 @@ public class PipelineStack extends Stack {
 								this)))
 				.build();
 
+		System.err.println("created policystatement" + codeArtifactStatement);
+
 		PolicyStatement codeArtifactStsStatement = PolicyStatement.Builder.create()
 				.sid("CodeArtifactStsStatement")
 				.effect(Effect.ALLOW)
@@ -103,6 +109,8 @@ public class PipelineStack extends Stack {
 					}
 				})
 				.build();
+
+		System.err.println("created policystatement" + codeArtifactStsStatement);
 
 		CodeBuildStep codeArtifactStep = CodeBuildStep.Builder.create("CodeArtifactDeploy")
 				.input(pipelineSource)
@@ -128,12 +136,19 @@ public class PipelineStack extends Stack {
 					}
 				})
 				.build();
+		System.err.println("created codebuildstep" + codeArtifactStep);
+
 
 		ApiStackStage apiStackStageDev = new ApiStackStage(this, "DEV", StageProps.builder().build());
+
+		System.err.println("created ApiStackStage" + apiStackStageDev);
+
 		pipeline.addStage(apiStackStageDev,
 				AddStageOpts.builder()
 						.post(Arrays.asList(codeArtifactStep))
 						.build());
+
+		System.err.println("added stage to pipeline" + pipeline);
 
 	}
 

@@ -17,6 +17,11 @@ public class CdkApp {
         new PipelineStack(app, "OpenAPIBlogPipeline", repositoryString, repositoryBranch, codestarConnectionArn,
                 codeArtifactRepository, codeArtifactDomain);
 
+        System.err.println("created PipelineStack inside app");
+
         app.synth();
+
+        System.err.println("app.synth");
+
     }
 }
