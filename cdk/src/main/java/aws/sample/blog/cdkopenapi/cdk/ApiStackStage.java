@@ -14,7 +14,11 @@ public class ApiStackStage extends Stage {
 	public ApiStackStage(final Construct scope, final String id, final StageProps props) {
 		super(scope, id, props);
 
+		System.err.println("ApiStackStage: before ApiStack creation");
+
 		new ApiStack(this, "OpenAPIBlogAPI", id, StackProps.builder().build());
+
+		System.err.println("ApiStackStage: after ApiStack creation");
 
 	}
 
