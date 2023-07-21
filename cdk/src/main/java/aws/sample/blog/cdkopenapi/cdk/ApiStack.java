@@ -178,7 +178,7 @@ public class ApiStack extends Stack {
 
 		// Alpine ruby docker image size = 532.12 MB
 		// Ruby slim docker image size = 829.31 MB
-		DockerImage apDocImage;
+		DockerImage apDocImage = null;
 		try {
 			apDocImage = DockerImage.fromBuild(entry);
 		}
