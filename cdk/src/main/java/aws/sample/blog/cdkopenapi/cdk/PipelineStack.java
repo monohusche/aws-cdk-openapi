@@ -38,6 +38,7 @@ public class PipelineStack extends Stack {
 				ConnectionSourceOptions.builder()
 						.connectionArn(connectionArn)
 						.build());
+		System.err.println("created pipelineSource" + pipelineSource);
 
 		// Synth Caching Support
 		// https://github.com/aws/aws-cdk/issues/13043,
