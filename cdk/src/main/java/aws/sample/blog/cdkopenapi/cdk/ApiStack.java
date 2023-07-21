@@ -195,6 +195,8 @@ public class ApiStack extends Stack {
 						"ls -la build/* && " +
 						"cp -a build/. /asset-output/");
 
+		System.err.println("ApiStack: before docker build ");
+
 		BundlingOptions.Builder apiDocBuilderOptions = BundlingOptions.builder().command(apiPackagingInstructions)
 				.image(apDocImage)
 				.local(new ILocalBundling() {
@@ -206,6 +208,8 @@ public class ApiStack extends Stack {
 				})
 				.user("root")
 				.outputType(BundlingOutput.NOT_ARCHIVED);
+
+		System.err.println("ApiStack: after docker build ");
 
 		ISource apiDocSource = Source.asset("../api", AssetOptions.builder()
 				.bundling(apiDocBuilderOptions.command(apiDocPackagingInstructions).build())
